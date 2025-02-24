@@ -61,30 +61,11 @@ export const Header = () => {
     burgerMenuRef,
     useCallback(() => setIsDrawerOpen(false), []),
   );
+  void isDrawerOpen;
 
   return (
     <div className="sticky lg:static top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 shadow-md shadow-secondary px-0 sm:px-2">
       <div className="navbar-start w-auto lg:w-1/2">
-        <div className="lg:hidden dropdown" ref={burgerMenuRef}>
-          <label
-            tabIndex={0}
-            className={`ml-1 btn btn-ghost ${isDrawerOpen ? "hover:bg-secondary" : "hover:bg-transparent"}`}
-            onClick={() => {
-              setIsDrawerOpen(prevIsOpenState => !prevIsOpenState);
-            }}
-          ></label>
-          {isDrawerOpen && (
-            <ul
-              tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-              onClick={() => {
-                setIsDrawerOpen(false);
-              }}
-            >
-              <HeaderMenuLinks />
-            </ul>
-          )}
-        </div>
         <Link href="/" passHref className="hidden lg:flex items-center gap-2 ml-4 mr-6 shrink-0">
           <div className="flex relative w-10 h-10">
             <Image alt="SE2 logo" className="cursor-pointer" fill src="/monadLogo.png" />
@@ -95,7 +76,17 @@ export const Header = () => {
           </div>
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">
-          <HeaderMenuLinks />
+          <a href="/" className="btn btn-primary">
+            Profile
+          </a>
+          <button className="btn btn-secondary">Game</button>
+          <button className="btn btn-accent">NFT</button>
+        </ul>
+        <ul className="steps">
+          <li className="step step-primary">Register</li>
+          <li className="step">Play</li>
+          <li className="step">Win</li>
+          <li className="step">Mint</li>
         </ul>
       </div>
       <div className="navbar-end flex-grow mr-4">
